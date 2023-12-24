@@ -1,0 +1,244 @@
+import time
+from os import name, system
+a = """
+                     .**.                  .**.
+                /%%%%%%%%%%%%%%       /%%%%%%%%%%%%%%
+              %%%%%%%%%%%%%%%%%%%   %%%#%%%%%%%%%%%%%%%*
+            %%%%%%%%%%%%%%%%%%%%%%/%%%%%%%%%%%%%%%%%%%%%%
+           /%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+           %%%%%%%%%%% L  I  F  E  C  A  R  E %%%%%%%%%%
+           %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+           /%%%%%%%%%%%%%%%%%%%%%%%%%%%%% ########### %%%%
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%% ########### %%%
+             %%%%%%%%%%%%%%%%%%%%%%%%%%%% ########### %%
+              #%%%%%%%%%%%%%%%%%%%%%%%%#% ###########% %
+                %%%%%%%%%%%%%%            ###########
+                  %%%%%%%%%%%% #################################
+                    %%%%%%%%%% #### H  O  S  P  I  T  A  L #####
+                      (#%%%%%% #################################
+                         %%%%% #################################
+                            %%            ###########
+                              .%%%%%%%(   ###########
+                                 *%#      ###########
+                                          ###########
+"""
+def clear():
+    if name == 'nt':
+        system('cls')
+    else:
+        system('clear')
+
+print(a)
+time.sleep(3)
+clear()
+G = 60
+
+users = {
+    "99220041606@gmail.com": "99220041606",
+    "99220041639@gmail.com": "99220041639",
+    "99220041560@gmail.com": "99220041560",
+    "99220040651@gmail.com": "99220040651"
+}
+
+def login():
+    user_id = input("Enter User-id  : ")
+    password = input("Enter Password : ")
+    if user_id not in users or users[user_id] != password:
+        print("Invalid user-id or password\nPlease Enter Valid Username Or Password")
+        time.sleep(0.5)
+        clear()
+        login()
+    else:
+        time.sleep(0.5)
+        clear()
+        print("\t\t\t\tWelcome To MEDI CARE Hospital")
+        print("\t\t\t\t------- -- ---- ---- --------")
+
+        def module():
+            print("1.Doctors Details And Timings")
+            print("2.Doctor Appointment")
+            print("3.Room Details")
+            print("4.Exit")
+            option1 = int(input("Choose an option:"))
+            clear()
+            if option1 == 1:
+                print("Here are the timings of doctors for appointment")
+                print("""
+                +----+-----------------+----------------+--------------------+---------------+
+                | SL | Speciality      |Typical Checkup |     Specialists    |     Timings   |
+                | NO |                 |    Details     |                    |               |
+                +----+-----------------+----------------+--------------------+---------------+
+                |    |                 |                | Dr.Praveen Chandra | 9:30AM-11:00AM|
+                | 1. | Cardiologist    |Heart Related,  |--------------------+---------------|
+                |    |                 |Blood Pressure  | Dr.Ashok           | 1:30PM-7:00PM |
+                +----+-----------------+----------------+--------------------+---------------+
+                |    |                 |                | Dr.Shyam           | 24hrs         |
+                | 2. | Dermatologist   | Skin Related   |--------------------+---------------|
+                |    |                 |                | Dr.Charan          | 24hrs         |
+                +----+-----------------+----------------+--------------------+---------------+ 
+                |    |                 |                | Dr.Neha            | 24hrs         |
+                | 3. | Opthamologist   | Eye Related    |--------------------+---------------|
+                |    |                 |                | Dr.Siva Kumar      | 24hrs         |
+                +----+-----------------+----------------+--------------------+---------------+
+                |    |                 |                |                    |               | 
+                | 4. | Neurologist     | Neurological   | Dr.Priya           | 24hrs         |
+                |    |                 | Related        |                    |               |
+                +----+-----------------+----------------+--------------------+---------------+
+                |    |                 |                |                    |               |
+                | 5. | Psychiatrist    | psychological  | Dr.Vikram          | 24hrs         |
+                |    |                 | Related        |                    |               |
+                +----+-----------------+----------------+--------------------+---------------+ 
+                |    |                 |                | Dr.Gopinath        | 24hrs         |
+                | 6. | Pulmanologist   | Lungs and      |--------------------+---------------|
+                |    |                 | Breathing      | Dr.Srinivas        | 24hrs         |
+                +----+-----------------+----------------+--------------------+---------------+
+                |    |                 |                |                    |               |
+                | 7. | Orthopedist     | Bone           | Dr.Harsha          | 24hrs         |
+                |    |                 | Related        |                    |               |
+                +----+-----------------+----------------+--------------------+---------------+
+                |    |                 |                |                    |               | 
+                | 8. | Pernitologist   | Pregnancy      | Dr.Rajya Lakshmi   | 24hrs         |
+                |    |                 | Related        |                    |               |
+                +----+-----------------+----------------+--------------------+---------------+ 
+                |    |                 |                | Dr.Hema            | 24hrs         | 
+                | 9. | Gynecologist    | Pelvic Exam    |--------------------+---------------|
+                |    |                 | Breast Exam    | Dr.Veda devi       | 24hrs         |
+                +----+-----------------+----------------+--------------------+---------------+ 
+                |    |                 |                | Dr.siva            | 24hrs         |
+                | 10.| Endocrinologist |Thyroid,Diabetes|--------------------+---------------|
+                |    |                 | Endocrinic     | Dr.Hari Prasad     | 24hrs         |
+                |    |                 |    Cancers     |                    |               |
+                +----+-----------------+----------------+--------------------+---------------+
+                |    |                 |                |                    |               |
+                | 11.|                 | Fever and small| Dr.Karthik         | 24hrs         |
+                |    |                 | Health issues  |                    |               |
+                +----+-----------------+----------------+--------------------+---------------+
+                """)
+                print("Note:")
+                print("24hrs consider as Morning 8:00AM-1:00PM And Evening 2:00PM-8:00PM")
+                module()
+            elif option1 == 2:
+                print("Please fill the following with valid details")
+                name = input("Enter Your Full Name              : ")
+                int(input("Enter your Age                    : "))
+                gender = input("Gender(Male/Female/Other)         : ")
+                if gender == "Male" or "male":
+                    g = "Mr."
+                else:
+                    g = "Mrs."
+
+                def number1():
+                    n1 = int(input("Enter Your Mobile Number          : "))
+                    if n1 > 9999999999 or n1 < 1000000000:
+                        print("Invalid Mobile Number")
+                        number1()
+                number1()
+
+                def number2():
+                    n2 = int(input("Enter Your Guardian Mobile Number : "))
+                    if n2 > 9999999999 or n2 < 1000000000:
+                        print("Invalid Mobile Number")
+                        number2()
+                number2()
+                input("Enter Your Address                : ")
+                input("Enter Your Health Issue           : ")
+                print("Here the Doctor names you have to choose")
+
+                def doct():
+                    print("A. Praveen Chandra(Cardiologist)")
+                    print("B. Dr.Shyam(Cardiologist)")
+                    print("C. Dr.Shyam(Dermatologist)")
+                    print("D. Dr.Charan(Dermatologist)")
+                    print("E. Dr.Neha(Opthamologist)")
+                    print("F. Dr.Siva Kumar(Opthamologist)")
+                    print("G. Dr.Priya(Neurologist)")
+                    print("H. Dr.Vikram(Psychiatrist)")
+                    print("I. Dr.Gopinath(Pulmanologist)")
+                    print("J. Dr.Srinivas(Pulmanologist)")
+                    print("K. Dr.Harsha(Orthopedist)")
+                    print("L. Dr.Rajya Lakshmi(Pernitologist)")
+                    print("M. Dr.Hema(Gynecologist)")
+                    print("N. Dr.Veda devi(Gynecologist)")
+                    print("O. Dr.Siva(Endocrinologist)")
+                    print("P. Dr.Hari Prasad(Endocrinologist)")
+                    print("Q. Dr.Karthik(Fever Related)")
+                    option2 = input("Select the Doctor:")
+                    def matter(n1):
+                        print(g, name, ",Your Appointment request is sent To", n1)
+                        print("If the doctor accept Your Appointment,")
+                        print("An OTP With Timings will come to your Mobile Number.")
+                        print("After that you have to visit the hospital at the given time and")
+                        print("Tell that OTP in the counter")
+                        time.sleep(G)
+                    if option2 == 'A':
+                        matter("Dr.Praveen Chandra")
+                    elif option2 == 'B':
+                        matter("Dr.Ashok ")
+                    elif option2 == 'C':
+                        matter("Dr.Shyam")
+                    elif option2 == 'D':
+                        matter("Dr.Charan")
+                    elif option2 == 'E':
+                        matter("Dr.Neha")
+                    elif option2 == 'F':
+                        matter("Dr.Siva Kumar")
+                    elif option2 == 'G':
+                        matter("Dr.Priya")
+                    elif option2 == 'H':
+                        matter("Dr.Vikram")
+                    elif option2 == 'I':
+                        matter("Dr.Gopinath")
+                    elif option2 == 'K':
+                        matter("Dr.Srinivas")
+                    elif option2 == 'L':
+                        matter("Dr.Harsha")
+                    elif option2 == 'M':
+                        matter("Dr.Rajya Lakshmi")
+                    elif option2 == 'N':
+                        matter("Dr.Hema")
+                    elif option2 == 'O':
+                        matter("Dr.Veda Devi")
+                    elif option2 == 'P':
+                        matter("Dr.Gopinath")
+                    elif option2 == 'Q':
+                        matter("Dr.Karthik")
+                    else:
+                        print("Please Choose Above Options Only")
+                        doct()
+                doct()
+            elif option1 == 3:
+                def room(a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12):
+                    print("Discharge Wards:-\n=>Room No.", a1, ",", a2, ",", a3, ",", a4, ",", a5, )
+                    print("Doctor's Cabins:-\n=>Room No.", a6, "-", a7, "'s cabin\n=>Room No.", a8, "-", a9, "'s cabin")
+                    print("ICU:-\n=>Room No.", a10, ",", a11, ",", a12)
+
+                def floor(b1):
+                    print(b1, "Floor Details")
+                    print("--- ----- -------")
+                print("Room Details")
+                print("Here You Can See Where The Rooms And Doctors Cabins Are Located")
+                print("Here The Hospital Has 8 floors.Each Floor Having 3 ICU Rooms,2 Doctor Cabins,5 discharge wards")
+                floor("1st")
+                room("111", "121", "131", "181", "1101", "151", "Dr.Srinivas", "171", "Dr.Harsha", "141", "161", "181")
+                floor("2nd")
+                room("222", "242", "272", "292", "2102", "252", "Dr.Shyam", "212", "Dr.Vikram", "232", "262", "282")
+                floor("3rd")
+                room("313", "343", "383", "393", "3103", "353", "Dr.Ashok", "333", "Dr.Priya", "323", "363", "373")
+                floor("4th")
+                room("414", "444", "454", "464", "494", "424", "Dr.Neha", "484", "Dr.Charan", "434", "474", "4104")
+                floor("5th")
+                room("515", "525", "535", "545", "555", "5105", "Dr.Siva", "565", "Dr.Hema", "575", "585", "595")
+                floor("6th")
+                room("626", "646", "666", "686", "6106", "616", "Dr.Praveen", "636", "Dr.Siva", "656", "686", "6106")
+                floor("7th")
+                room("717", "747", "757", "767", "797", "727", "Dr.Gopi", "787", "Dr.Lakshmi", "737", "777", "7107")
+                floor("8th")
+                room("818", "828", "838", "848", "858", "868", "Dr.Veda", "878", "Dr.Hari", "888", "898", "8108")
+                time.sleep(G)
+            elif option1 == 4:
+                exit()
+            else:
+                print("Choose Correct Option")
+                module()
+        module()
+login()
