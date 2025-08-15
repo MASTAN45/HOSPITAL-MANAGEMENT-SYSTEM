@@ -29,7 +29,12 @@ Showcasing the directory of specialists and the smart recommendation system for 
 A simple, professional view of the hospital's room and cabin layout.
 <img width="1920" height="1030" alt="jav5" src="https://github.com/user-attachments/assets/c8af8679-1f71-4f8f-9546-cae32420085d" />
 
+*Final  Appointment Confirmation*
+<img width="1920" height="1030" alt="jav4" src="https://github.com/user-attachments/assets/e1df27ba-9ec7-4f13-baa4-e2080505f81b" />
+
+
 
 *Author*
-Mastan - GitHub Profile
+Shaik Mastan
+
 Work Flow Daigram : (https://github.com/MASTAN45/project/assets/142141981/b8067ba8-fdf3-46dc-8633-a914e0ef8fea)
