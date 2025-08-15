@@ -1,6 +1,97 @@
-import time
-from os import name, system
-a = """
+import java.util.HashMap;
+import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
+
+public class HospitalManagementSystem {
+
+    // A HashMap to store user credentials (email -> password)
+    private static final HashMap<String, String> users = new HashMap<>();
+    // A HashMap to map health issue keywords to doctor specializations
+    private static final HashMap<String, String> specializationMap = new HashMap<>();
+    // A HashMap to store doctor names by specialization
+    private static final HashMap<String, String[]> doctorsBySpecialization = new HashMap<>();
+    // A HashMap to store doctor names and their corresponding room numbers
+    private static final HashMap<String, String> doctorRooms = new HashMap<>();
+    private static final Scanner scanner = new Scanner(System.in);
+
+    public static void main(String[] args) {
+        // Initialize user credentials
+        users.put("Mastan", "Mastan@4518");
+
+        // Initialize specialization and doctor data
+        initializeSpecializations();
+        
+        // Display the welcome ASCII art and clear the screen
+        displayWelcomeArt();
+
+        // Start the login process
+        login();
+    }
+
+    // Initializes the data for doctor specializations and health issue keywords
+    private static void initializeSpecializations() {
+        // Mapping keywords to specializations
+        specializationMap.put("heart", "Cardiologist");
+        specializationMap.put("cardio", "Cardiologist");
+        specializationMap.put("blood pressure", "Cardiologist");
+        specializationMap.put("skin", "Dermatologist");
+        specializationMap.put("dermatology", "Dermatologist");
+        specializationMap.put("eye", "Opthamologist");
+        specializationMap.put("opthamology", "Opthamologist");
+        specializationMap.put("neurological", "Neurologist");
+        specializationMap.put("neurology", "Neurologist");
+        specializationMap.put("psychological", "Psychiatrist");
+        specializationMap.put("psychiatry", "Psychiatrist");
+        specializationMap.put("lungs", "Pulmonologist");
+        specializationMap.put("pulmonary", "Pulmonologist");
+        specializationMap.put("breathing", "Pulmonologist");
+        specializationMap.put("bone", "Orthopedist");
+        specializationMap.put("orthopedic", "Orthopedist");
+        specializationMap.put("pregnancy", "Pernitologist");
+        specializationMap.put("pelvic", "Gynecologist");
+        specializationMap.put("gynecology", "Gynecologist");
+        specializationMap.put("thyroid", "Endocrinologist");
+        specializationMap.put("diabetes", "Endocrinologist");
+        specializationMap.put("fever", "General Physician");
+        specializationMap.put("general", "General Physician");
+        
+        // Mapping specializations to doctor names
+        doctorsBySpecialization.put("Cardiologist", new String[]{"Dr. Praveen Chandra", "Dr. Ashok"});
+        doctorsBySpecialization.put("Dermatologist", new String[]{"Dr. Shyam", "Dr. Charan"});
+        doctorsBySpecialization.put("Opthamologist", new String[]{"Dr. Neha", "Dr. Siva Kumar"});
+        doctorsBySpecialization.put("Neurologist", new String[]{"Dr. Priya"});
+        doctorsBySpecialization.put("Psychiatrist", new String[]{"Dr. Vikram"});
+        doctorsBySpecialization.put("Pulmonologist", new String[]{"Dr. Gopinath", "Dr. Srinivas"});
+        doctorsBySpecialization.put("Orthopedist", new String[]{"Dr. Harsha"});
+        doctorsBySpecialization.put("Pernitologist", new String[]{"Dr. Rajya Lakshmi"});
+        doctorsBySpecialization.put("Gynecologist", new String[]{"Dr. Hema", "Dr. Veda devi"});
+        doctorsBySpecialization.put("Endocrinologist", new String[]{"Dr. Siva", "Dr. Hari Prasad"});
+        doctorsBySpecialization.put("General Physician", new String[]{"Dr. Karthik"});
+
+        // Mapping doctor names to room numbers
+        doctorRooms.put("Dr. Praveen Chandra", "616");
+        doctorRooms.put("Dr. Ashok", "353");
+        doctorRooms.put("Dr. Shyam", "252");
+        doctorRooms.put("Dr. Charan", "484");
+        doctorRooms.put("Dr. Neha", "424");
+        doctorRooms.put("Dr. Siva Kumar", "5105"); 
+        doctorRooms.put("Dr. Priya", "333");
+        doctorRooms.put("Dr. Vikram", "212");
+        doctorRooms.put("Dr. Gopinath", "727");
+        doctorRooms.put("Dr. Srinivas", "151");
+        doctorRooms.put("Dr. Harsha", "171");
+        doctorRooms.put("Dr. Rajya Lakshmi", "787");
+        doctorRooms.put("Dr. Hema", "565");
+        doctorRooms.put("Dr. Veda devi", "868");
+        doctorRooms.put("Dr. Siva", "636");
+        doctorRooms.put("Dr. Hari Prasad", "878");
+        doctorRooms.put("Dr. Karthik", "110");
+    }
+
+    // Displays a welcome banner with ASCII art
+    private static void displayWelcomeArt() {
+        String welcomeArt = 
+        """
                      .**.                  .**.
                 /%%%%%%%%%%%%%%       /%%%%%%%%%%%%%%
               %%%%%%%%%%%%%%%%%%%   %%%#%%%%%%%%%%%%%%%*
@@ -21,49 +112,91 @@ a = """
                               .%%%%%%%(   ###########
                                  *%#      ###########
                                           ###########
-"""
-def clear():
-    if name == 'nt':
-        system('cls')
-    else:
-        system('clear')
+        """;
+        System.out.println(welcomeArt);
+        try {
+            TimeUnit.SECONDS.sleep(3);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        clearScreen();
+    }
 
-print(a)
-time.sleep(3)
-clear()
-G = 60
+    // Clears the console screen
+    private static void clearScreen() {
+        try {
+            if (System.getProperty("os.name").contains("Windows")) {
+                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+            } else {
+                System.out.print("\033[H\033[2J");
+                System.out.flush();
+            }
+        } catch (Exception e) {
+            // Do nothing if clearing the screen fails
+        }
+    }
 
-users = {
-    "99220041606@gmail.com": "99220041606",
-    "99220041639@gmail.com": "99220041639",
-    "99220041560@gmail.com": "99220041560",
-    "99220040651@gmail.com": "99220040651"
-}
+    // Handles the user login process
+    private static void login() {
+        System.out.print("Enter Username  : ");
+        String userId = scanner.nextLine();
+        System.out.print("Enter Password : ");
+        String password = scanner.nextLine();
 
-def login():
-    user_id = input("Enter User-id  : ")
-    password = input("Enter Password : ")
-    if user_id not in users or users[user_id] != password:
-        print("Invalid user-id or password\nPlease Enter Valid Username Or Password")
-        time.sleep(0.5)
-        clear()
-        login()
-    else:
-        time.sleep(0.5)
-        clear()
-        print("\t\t\t\tWelcome To MEDI CARE Hospital")
-        print("\t\t\t\t------- -- ---- ---- --------")
+        if (!users.containsKey(userId) || !users.get(userId).equals(password)) {
+            System.out.println("Invalid username or password\nPlease Enter Valid Username Or Password");
+            try {
+                TimeUnit.SECONDS.sleep(1);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            clearScreen();
+            login();
+        } else {
+            clearScreen();
+            System.out.println("\t\t\t\tWelcome To MEDI CARE Hospital");
+            System.out.println("\t\t\t\t------- -- ---- ---- --------");
+            mainMenu();
+        }
+    }
 
-        def module():
-            print("1.Doctors Details And Timings")
-            print("2.Doctor Appointment")
-            print("3.Room Details")
-            print("4.Exit")
-            option1 = int(input("Choose an option:"))
-            clear()
-            if option1 == 1:
-                print("Here are the timings of doctors for appointment")
-                print("""
+    // Main menu for the hospital management system
+    private static void mainMenu() {
+        System.out.println("1. Doctors Details And Timings");
+        System.out.println("2. Doctor Appointment");
+        System.out.println("3. Room Details");
+        System.out.println("4. Exit");
+        System.out.print("Choose an option: ");
+        int option = scanner.nextInt();
+        scanner.nextLine(); // consume newline character
+
+        clearScreen();
+
+        switch (option) {
+            case 1:
+                displayDoctorDetails();
+                break;
+            case 2:
+                bookAppointment();
+                break;
+            case 3:
+                displayRoomDetails();
+                break;
+            case 4:
+                System.out.println("Exiting the system. Thank you!");
+                System.exit(0);
+                break;
+            default:
+                System.out.println("Choose Correct Option");
+                mainMenu();
+                break;
+        }
+    }
+
+    // Displays the details and timings of doctors
+    private static void displayDoctorDetails() {
+        System.out.println("Here are the timings of doctors for appointment");
+        System.out.println("""
                 +----+-----------------+----------------+--------------------+---------------+
                 | SL | Speciality      |Typical Checkup |     Specialists    |     Timings   |
                 | NO |                 |    Details     |                    |               |
@@ -75,170 +208,158 @@ def login():
                 |    |                 |                | Dr.Shyam           | 24hrs         |
                 | 2. | Dermatologist   | Skin Related   |--------------------+---------------|
                 |    |                 |                | Dr.Charan          | 24hrs         |
-                +----+-----------------+----------------+--------------------+---------------+ 
+                +----+-----------------+----------------+--------------------+---------------+
                 |    |                 |                | Dr.Neha            | 24hrs         |
                 | 3. | Opthamologist   | Eye Related    |--------------------+---------------|
                 |    |                 |                | Dr.Siva Kumar      | 24hrs         |
                 +----+-----------------+----------------+--------------------+---------------+
-                |    |                 |                |                    |               | 
+                |    |                 |                |                    |               |
                 | 4. | Neurologist     | Neurological   | Dr.Priya           | 24hrs         |
                 |    |                 | Related        |                    |               |
                 +----+-----------------+----------------+--------------------+---------------+
                 |    |                 |                |                    |               |
                 | 5. | Psychiatrist    | psychological  | Dr.Vikram          | 24hrs         |
                 |    |                 | Related        |                    |               |
-                +----+-----------------+----------------+--------------------+---------------+ 
+                +----+-----------------+----------------+--------------------+---------------+
                 |    |                 |                | Dr.Gopinath        | 24hrs         |
-                | 6. | Pulmanologist   | Lungs and      |--------------------+---------------|
+                | 6. | Pulmonologist   | Lungs and      |--------------------+---------------|
                 |    |                 | Breathing      | Dr.Srinivas        | 24hrs         |
                 +----+-----------------+----------------+--------------------+---------------+
                 |    |                 |                |                    |               |
                 | 7. | Orthopedist     | Bone           | Dr.Harsha          | 24hrs         |
                 |    |                 | Related        |                    |               |
                 +----+-----------------+----------------+--------------------+---------------+
-                |    |                 |                |                    |               | 
+                |    |                 |                |                    |               |
                 | 8. | Pernitologist   | Pregnancy      | Dr.Rajya Lakshmi   | 24hrs         |
                 |    |                 | Related        |                    |               |
-                +----+-----------------+----------------+--------------------+---------------+ 
-                |    |                 |                | Dr.Hema            | 24hrs         | 
+                +----+-----------------+----------------+--------------------+---------------+
+                |    |                 |                | Dr.Hema            | 24hrs         |
                 | 9. | Gynecologist    | Pelvic Exam    |--------------------+---------------|
                 |    |                 | Breast Exam    | Dr.Veda devi       | 24hrs         |
-                +----+-----------------+----------------+--------------------+---------------+ 
+                +----+-----------------+----------------+--------------------+---------------+
                 |    |                 |                | Dr.siva            | 24hrs         |
                 | 10.| Endocrinologist |Thyroid,Diabetes|--------------------+---------------|
                 |    |                 | Endocrinic     | Dr.Hari Prasad     | 24hrs         |
                 |    |                 |    Cancers     |                    |               |
                 +----+-----------------+----------------+--------------------+---------------+
                 |    |                 |                |                    |               |
-                | 11.|                 | Fever and small| Dr.Karthik         | 24hrs         |
+                | 11.| General Physician| Fever and small| Dr.Karthik         | 24hrs         |
                 |    |                 | Health issues  |                    |               |
                 +----+-----------------+----------------+--------------------+---------------+
-                """)
-                print("Note:")
-                print("24hrs consider as Morning 8:00AM-1:00PM And Evening 2:00PM-8:00PM")
-                module()
-            elif option1 == 2:
-                print("Please fill the following with valid details")
-                name = input("Enter Your Full Name              : ")
-                int(input("Enter your Age                    : "))
-                gender = input("Gender(Male/Female/Other)         : ")
-                if gender == "Male" or "male":
-                    g = "Mr."
-                else:
-                    g = "Mrs."
+                """);
+        System.out.println("Note:");
+        System.out.println("24hrs consider as Morning 8:00AM-1:00PM And Evening 2:00PM-8:00PM");
+        mainMenu();
+    }
 
-                def number1():
-                    n1 = int(input("Enter Your Mobile Number          : "))
-                    if n1 > 9999999999 or n1 < 1000000000:
-                        print("Invalid Mobile Number")
-                        number1()
-                number1()
+    // Handles the doctor appointment booking process
+    private static void bookAppointment() {
+        System.out.println("Please fill the following with valid details");
+        System.out.print("Enter Your Full Name              : ");
+        String name = scanner.nextLine();
+        System.out.print("Enter your Age                    : ");
+        int age = scanner.nextInt();
+        scanner.nextLine(); // consume newline
+        System.out.print("Gender(Male/Female/Other)         : ");
+        String gender = scanner.nextLine().toLowerCase();
+        String salutation = (gender.equals("male")) ? "Mr." : "Mrs.";
 
-                def number2():
-                    n2 = int(input("Enter Your Guardian Mobile Number : "))
-                    if n2 > 9999999999 or n2 < 1000000000:
-                        print("Invalid Mobile Number")
-                        number2()
-                number2()
-                input("Enter Your Address                : ")
-                input("Enter Your Health Issue           : ")
-                print("Here the Doctor names you have to choose")
+        String mobileNumber = getValidMobileNumber("Enter Your Mobile Number          : ");
+        String guardianMobileNumber = getValidMobileNumber("Enter Your Guardian Mobile Number : ");
 
-                def doct():
-                    print("A. Praveen Chandra(Cardiologist)")
-                    print("B. Dr.Shyam(Cardiologist)")
-                    print("C. Dr.Shyam(Dermatologist)")
-                    print("D. Dr.Charan(Dermatologist)")
-                    print("E. Dr.Neha(Opthamologist)")
-                    print("F. Dr.Siva Kumar(Opthamologist)")
-                    print("G. Dr.Priya(Neurologist)")
-                    print("H. Dr.Vikram(Psychiatrist)")
-                    print("I. Dr.Gopinath(Pulmanologist)")
-                    print("J. Dr.Srinivas(Pulmanologist)")
-                    print("K. Dr.Harsha(Orthopedist)")
-                    print("L. Dr.Rajya Lakshmi(Pernitologist)")
-                    print("M. Dr.Hema(Gynecologist)")
-                    print("N. Dr.Veda devi(Gynecologist)")
-                    print("O. Dr.Siva(Endocrinologist)")
-                    print("P. Dr.Hari Prasad(Endocrinologist)")
-                    print("Q. Dr.Karthik(Fever Related)")
-                    option2 = input("Select the Doctor:")
-                    def matter(n1):
-                        print(g, name, ",Your Appointment request is sent To", n1)
-                        print("If the doctor accept Your Appointment,")
-                        print("An OTP With Timings will come to your Mobile Number.")
-                        print("After that you have to visit the hospital at the given time and")
-                        print("Tell that OTP in the counter")
-                        time.sleep(G)
-                    if option2 == 'A':
-                        matter("Dr.Praveen Chandra")
-                    elif option2 == 'B':
-                        matter("Dr.Ashok ")
-                    elif option2 == 'C':
-                        matter("Dr.Shyam")
-                    elif option2 == 'D':
-                        matter("Dr.Charan")
-                    elif option2 == 'E':
-                        matter("Dr.Neha")
-                    elif option2 == 'F':
-                        matter("Dr.Siva Kumar")
-                    elif option2 == 'G':
-                        matter("Dr.Priya")
-                    elif option2 == 'H':
-                        matter("Dr.Vikram")
-                    elif option2 == 'I':
-                        matter("Dr.Gopinath")
-                    elif option2 == 'K':
-                        matter("Dr.Srinivas")
-                    elif option2 == 'L':
-                        matter("Dr.Harsha")
-                    elif option2 == 'M':
-                        matter("Dr.Rajya Lakshmi")
-                    elif option2 == 'N':
-                        matter("Dr.Hema")
-                    elif option2 == 'O':
-                        matter("Dr.Veda Devi")
-                    elif option2 == 'P':
-                        matter("Dr.Gopinath")
-                    elif option2 == 'Q':
-                        matter("Dr.Karthik")
-                    else:
-                        print("Please Choose Above Options Only")
-                        doct()
-                doct()
-            elif option1 == 3:
-                def room(a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12):
-                    print("Discharge Wards:-\n=>Room No.", a1, ",", a2, ",", a3, ",", a4, ",", a5, )
-                    print("Doctor's Cabins:-\n=>Room No.", a6, "-", a7, "'s cabin\n=>Room No.", a8, "-", a9, "'s cabin")
-                    print("ICU:-\n=>Room No.", a10, ",", a11, ",", a12)
+        System.out.print("Enter Your Address                : ");
+        scanner.nextLine();
+        System.out.print("Enter Your Health Issue           : ");
+        String healthIssue = scanner.nextLine().toLowerCase();
+        
+        selectDoctor(salutation, name, healthIssue);
+    }
 
-                def floor(b1):
-                    print(b1, "Floor Details")
-                    print("--- ----- -------")
-                print("Room Details")
-                print("Here You Can See Where The Rooms And Doctors Cabins Are Located")
-                print("Here The Hospital Has 8 floors.Each Floor Having 3 ICU Rooms,2 Doctor Cabins,5 discharge wards")
-                floor("1st")
-                room("111", "121", "131", "181", "1101", "151", "Dr.Srinivas", "171", "Dr.Harsha", "141", "161", "181")
-                floor("2nd")
-                room("222", "242", "272", "292", "2102", "252", "Dr.Shyam", "212", "Dr.Vikram", "232", "262", "282")
-                floor("3rd")
-                room("313", "343", "383", "393", "3103", "353", "Dr.Ashok", "333", "Dr.Priya", "323", "363", "373")
-                floor("4th")
-                room("414", "444", "454", "464", "494", "424", "Dr.Neha", "484", "Dr.Charan", "434", "474", "4104")
-                floor("5th")
-                room("515", "525", "535", "545", "555", "5105", "Dr.Siva", "565", "Dr.Hema", "575", "585", "595")
-                floor("6th")
-                room("626", "646", "666", "686", "6106", "616", "Dr.Praveen", "636", "Dr.Siva", "656", "686", "6106")
-                floor("7th")
-                room("717", "747", "757", "767", "797", "727", "Dr.Gopi", "787", "Dr.Lakshmi", "737", "777", "7107")
-                floor("8th")
-                room("818", "828", "838", "848", "858", "868", "Dr.Veda", "878", "Dr.Hari", "888", "898", "8108")
-                time.sleep(G)
-            elif option1 == 4:
-                exit()
-            else:
-                print("Choose Correct Option")
-                module()
-        module()
-login()
+    // Gets a valid 10-digit mobile number from the user
+    private static String getValidMobileNumber(String prompt) {
+        String number;
+        while (true) {
+            System.out.print(prompt);
+            number = scanner.nextLine();
+            if (number.length() == 10 && number.matches("\\d+")) {
+                return number;
+            } else {
+                System.out.println("Invalid Mobile Number. Please enter a 10-digit number.");
+            }
+        }
+    }
+
+    // Allows the user to select a doctor for the appointment based on health issue
+    private static void selectDoctor(String salutation, String name, String healthIssue) {
+        String recommendedSpecialty = "General Physician"; // Default to general physician
+        for (String keyword : specializationMap.keySet()) {
+            if (healthIssue.contains(keyword)) {
+                recommendedSpecialty = specializationMap.get(keyword);
+                break;
+            }
+        }
+        
+        String[] recommendedDoctors = doctorsBySpecialization.get(recommendedSpecialty);
+        System.out.println("\nBased on your health issue, we recommend the following " + recommendedSpecialty + " specialist(s):");
+        
+        for (int i = 0; i < recommendedDoctors.length; i++) {
+            System.out.println("   " + (char)('A' + i) + ". " + recommendedDoctors[i]);
+        }
+        
+        System.out.print("Select the Doctor: ");
+        String option = scanner.nextLine().toUpperCase();
+        
+        if (option.length() != 1 || option.charAt(0) < 'A' || option.charAt(0) >= 'A' + recommendedDoctors.length) {
+            System.out.println("Please choose a valid option from the list.");
+            selectDoctor(salutation, name, healthIssue);
+            return;
+        }
+
+        String doctorName = recommendedDoctors[option.charAt(0) - 'A'];
+        String roomNumber = doctorRooms.getOrDefault(doctorName, "Unknown");
+
+        System.out.println(salutation + " " + name + ", your appointment with " + doctorName + " has been booked successfully.");
+        System.out.println("Please go to room number " + roomNumber + " for your confirmed timing.");
+
+        // Wait for 60 seconds (like the original Python code's G = 60)
+        try {
+            TimeUnit.SECONDS.sleep(60);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        mainMenu();
+    }
+
+    // Displays the room details of the hospital
+    private static void displayRoomDetails() {
+        System.out.println("Room Details");
+        System.out.println("Here You Can See Where The Rooms And Doctors Cabins Are Located");
+        System.out.println("Here The Hospital Has 8 floors.Each Floor Having 3 ICU Rooms,2 Doctor Cabins,5 discharge wards");
+        System.out.println("-------------------------------------------------------------------------------------------------");
+        System.out.printf("| %-5s | %-25s | %-35s | %-15s |%n", "Floor", "Discharge Wards", "Doctor's Cabins", "ICU");
+        System.out.println("-------------------------------------------------------------------------------------------------");
+
+        displayFloorDetails("1st", "111, 121, 131, 181, 1101", "151 - Dr.Srinivas, 171 - Dr.Harsha", "141, 161, 181");
+        displayFloorDetails("2nd", "222, 242, 272, 292, 2102", "252 - Dr.Shyam, 212 - Dr.Vikram", "232, 262, 282");
+        displayFloorDetails("3rd", "313, 343, 383, 393, 3103", "353 - Dr.Ashok, 333 - Dr.Priya", "323, 363, 373");
+        displayFloorDetails("4th", "414, 444, 454, 464, 494", "424 - Dr.Neha, 484 - Dr.Charan", "434, 474, 4104");
+        displayFloorDetails("5th", "515, 525, 535, 545, 555", "5105 - Dr.Siva, 565 - Dr.Hema", "575, 585, 595");
+        displayFloorDetails("6th", "626, 646, 666, 686, 6106", "616 - Dr.Praveen, 636 - Dr.Siva", "656, 686, 6106");
+        displayFloorDetails("7th", "717, 747, 757, 767, 797", "727 - Dr.Gopi, 787 - Dr.Lakshmi", "737, 777, 7107");
+        displayFloorDetails("8th", "818, 828, 838, 848, 858", "868 - Dr.Veda, 878 - Dr.Hari", "888, 898, 8108");
+
+        System.out.println("-------------------------------------------------------------------------------------------------");
+
+        try {
+            TimeUnit.SECONDS.sleep(60);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        mainMenu();
+    }
+
+    // Helper method to display details for a specific floor in a table-like format
+    private static void displayFloorDetails(String floorName, String dischargeWards, String doctorCabins, String icuRooms) {
+        System.out.printf("| %-5s | %-25s | %-35s | %-15s |%n", floorName, dischargeWards, doctorCabins, icuRooms);
+    }
+}
