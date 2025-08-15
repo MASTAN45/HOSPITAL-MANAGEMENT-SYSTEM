@@ -1,4 +1,5 @@
 *Hospital Management System*
+
 A robust console-based application designed to streamline hospital operations, providing efficient management of patient appointments and room information. Developed in Java, this system offers a practical demonstration of core programming principles in a professional context.
 
 *Features*
@@ -32,9 +33,11 @@ A simple, professional view of the hospital's room and cabin layout.
 *Final  Appointment Confirmation*
 <img width="1920" height="1030" alt="jav4" src="https://github.com/user-attachments/assets/e1df27ba-9ec7-4f13-baa4-e2080505f81b" />
 
+*Work Flow Daigram*:
+<img width="1095" height="661" alt="javworkflow" src="https://github.com/user-attachments/assets/d76387eb-6804-4e87-8ac2-6ef63ef9e037" />
+
+
 
 
 *Author*
 Shaik Mastan
-
-Work Flow Daigram : (https://github.com/MASTAN45/project/assets/142141981/b8067ba8-fdf3-46dc-8633-a914e0ef8fea)
