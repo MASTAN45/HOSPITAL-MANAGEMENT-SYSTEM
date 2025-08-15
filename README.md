@@ -17,15 +17,18 @@ Below are visual representations of the application's user interface, highlighti
 
 *Welcome Screen & Main Menu*
 The application's initial interface, presenting the core functionalities after a successful login.
-!(https://storage.googleapis.com/maker-suite-media/jav2.png)
+<img width="1920" height="1030" alt="outputjava1" src="https://github.com/user-attachments/assets/9b16c185-d05d-443c-8cc0-c99c0d14254b" />
+
 
 *Doctor & Appointment Details*
 Showcasing the directory of specialists and the smart recommendation system for appointments.
-!(https://storage.googleapis.com/maker-suite-media/jav4.png)
+<img width="1920" height="1030" alt="jav3" src="https://github.com/user-attachments/assets/00c4737e-3fbc-4a2e-965c-667cc8ba2d82" />
+
 
 *Room & Cabin Directory*
 A simple, professional view of the hospital's room and cabin layout.
-!(https://storage.googleapis.com/maker-suite-media/jav5.png)
+<img width="1920" height="1030" alt="jav5" src="https://github.com/user-attachments/assets/c8af8679-1f71-4f8f-9546-cae32420085d" />
+
 
 *Author*
 Mastan - GitHub Profile
