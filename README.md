@@ -1,22 +1,32 @@
-HOSPITAL MANAGERMENT SYSTEM
-I did this project during my first year of college by using PYTHON PROGRAMMING LANGUAGE WITH SOME MODULES LIKE TIME AND DATE 
-➢The main aim of our project is to make the patients not to wait for long time in the hospitals. ➢We are providing doctors details also, so they will take the appointment of the doctor from whom they want.
-Here's the detail explanation of hospital management system
-INTRODUCTION
-➢This system provides patients with an easy way of booking a doctor’s appointment.
-➢We provides room allotment details and doctors details.
-➢It is very easier to manage appointments for doctors also.
-➢We provided doctor details based on the health issues they are handling.
-➢Hospital Management system is designed to booking an appointment of a doctor.
-OBJECTIVES OF THE PROJECT
-➢If anybody wants to visit a doctor they need to be wait for doctor’s appointment for long time. If the doctor has an emergency than he may cancel the appointment of the patients  then has to left.
-➢The main aim of our project is to make the patients not to wait for long time in the hospitals. ➢We are providing doctors details also, so they will take the appointment of the doctor from whom they want.
-➢Patients can able book their appointments from their houses.
-➢It is user-friendly process.
-MODULES / OPRATIONS / FEATURES :-
-➢Doctors Details and Timings
-➢Doctor Appointment
-➢Room Details
-➢Exit or return to main screen.
-Overview (Flowchart) of project
-![WhatsApp Image 2023-12-25 at 00 39 10_d6a886d3](https://github.com/MASTAN45/project/assets/142141981/b8067ba8-fdf3-46dc-8633-a914e0ef8fea)
+*Hospital Management System*
+A robust console-based application designed to streamline hospital operations, providing efficient management of patient appointments and room information. Developed in Java, this system offers a practical demonstration of core programming principles in a professional context.
+
+*Features*
+The application provides the following key functionalities:
+
+*User Authentication:* A secure login system that controls access to the main administrative and patient features.
+
+*Comprehensive Doctor Directory*: A detailed, structured table of medical professionals, including their specializations and operating hours.
+
+*Smart Appointment Scheduling:* An intuitive system that intelligently recommends doctors to patients based on their specific health issues.
+
+*Facility Management:* A clear, table-formatted overview of the hospital's infrastructure, detailing room numbers for discharge wards, doctor's cabins, and ICU facilities.
+
+Screenshots
+Below are visual representations of the application's user interface, highlighting its functionality and clean, console-based design.
+
+*Welcome Screen & Main Menu*
+The application's initial interface, presenting the core functionalities after a successful login.
+!(https://storage.googleapis.com/maker-suite-media/jav2.png)
+
+*Doctor & Appointment Details*
+Showcasing the directory of specialists and the smart recommendation system for appointments.
+!(https://storage.googleapis.com/maker-suite-media/jav4.png)
+
+*Room & Cabin Directory*
+A simple, professional view of the hospital's room and cabin layout.
+!(https://storage.googleapis.com/maker-suite-media/jav5.png)
+
+*Author*
+Mastan - GitHub Profile
+Work Flow Daigram : (https://github.com/MASTAN45/project/assets/142141981/b8067ba8-fdf3-46dc-8633-a914e0ef8fea)
